@@ -1,23 +1,23 @@
 #!/bin/bash
 
 #1. target config
-BUILD_TARGET=$1
+BUILD_TARGET=a05s_sea_openx
 export MODEL=$(echo $BUILD_TARGET | cut -d'_' -f1)
 export PROJECT_NAME=${MODEL}
 export REGION=$(echo $BUILD_TARGET | cut -d'_' -f2)
 export CARRIER=$(echo $BUILD_TARGET | cut -d'_' -f3)
-export TARGET_BUILD_VARIANT=$2
+export TARGET_BUILD_VARIANT=user
 		
 		
 #2. sm8550 common config
-CHIPSET_NAME=$3
+CHIPSET_NAME=m269
 
 export ANDROID_BUILD_TOP=$(pwd)
-export TARGET_PRODUCT=gki
-export TARGET_BOARD_PLATFORM=gki
+export TARGET_PRODUCT=consolidate
+export TARGET_BOARD_PLATFORM=consolidate
 
 export ANDROID_PRODUCT_OUT=${ANDROID_BUILD_TOP}/out/target/product/${MODEL}
-export OUT_DIR=${ANDROID_BUILD_TOP}/out/msm-${CHIPSET_NAME}-${CHIPSET_NAME}-${TARGET_PRODUCT}
+export OUT_DIR=${ANDROID_BUILD_TOP}/out/msm-kernel-${CHIPSET_NAME}-${TARGET_PRODUCT}
 
 # for Lcd(techpack) driver build
 export KBUILD_EXTRA_SYMBOLS="${ANDROID_BUILD_TOP}/out/vendor/qcom/opensource/mmrm-driver/Module.symvers \
