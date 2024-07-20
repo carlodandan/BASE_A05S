@@ -1,5 +1,7 @@
 #!/bin/bash
 
+bash ./clone.sh | exit 0
+
 #1. target config
 BUILD_TARGET=a05s_sea_openx
 export MODEL=$(echo $BUILD_TARGET | cut -d'_' -f1)
@@ -13,8 +15,10 @@ export TARGET_BUILD_VARIANT=user
 CHIPSET_NAME=m269
 
 export ANDROID_BUILD_TOP=$(pwd)
-export TARGET_PRODUCT=consolidate
-export TARGET_BOARD_PLATFORM=consolidate
+export TARGET_PRODUCT=gki
+export TARGET_BOARD_PLATFORM=gki
+
+mkdir -p out/target/product/${MODEL}
 
 export ANDROID_PRODUCT_OUT=${ANDROID_BUILD_TOP}/out/target/product/${MODEL}
 export OUT_DIR=${ANDROID_BUILD_TOP}/out/msm-kernel-${CHIPSET_NAME}-${TARGET_PRODUCT}
