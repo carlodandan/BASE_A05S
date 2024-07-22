@@ -1,0 +1,12 @@
+# Ignore
+out/
+kernel_platform/msm-kernel/
+kernel_platform/common/
+kernel_platform/prebuilts/jdk/jdk11/
+kernel_platform/prebuilts/clang/host/linux-x86/
+kernel_platform/prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8/
+kernel_platform/prebuilts/build-tools/
+kernel_platform/prebuilts/kernel-build-tools/
+kernel_platform/prebuilts/bazel/linux-x86_64/
+kernel_platform/prebuilts/ndk-r23
+**/exports.txt
