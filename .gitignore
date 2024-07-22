@@ -9,4 +9,6 @@ kernel_platform/prebuilts/build-tools/
 kernel_platform/prebuilts/kernel-build-tools/
 kernel_platform/prebuilts/bazel/linux-x86_64/
 kernel_platform/prebuilts/ndk-r23
+device/qcom/
 **/exports.txt
+**/build.log
