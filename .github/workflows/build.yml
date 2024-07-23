@@ -1,0 +1,48 @@
+name: Kernel Builder
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build Kernel by ${{ github.actor }}
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: write
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Cleanup
+      uses: rokibhasansagar/slimhub_actions@main
+      
+    - name: Set Swap Space
+      uses: pierotofy/set-swap-space@master
+      with:
+        swap-size-gb: 32
+
+    - name: Build Environment
+      run: |
+        sudo apt update -y
+        sudo apt install bison flex rsync bison device-tree-compiler bc -y
+
+    - name: Build Kernel
+      run: |
+        bash build_kernel_GKI.sh build/build.sh 2>&1 | tee build_logs.txt
+
+    - name: Upload Boot and Kernel
+      uses: softprops/action-gh-release@v2
+      with:
+        files: |
+          build_logs.txt
+          out/msm-kernel-m269-gki/gki_kernel/dist/Image
+          out/msm-kernel-m269-gki/gki_kernel/dist/Image.gz
+          out/msm-kernel-m269-gki/gki_kernel/dist/Image.lz4
+          out/msm-kernel-m269-gki/gki_kernel/dist/boot.img
+          out/msm-kernel-m269-gki/gki_kernel/dist/boot-gz.img
+          out/msm-kernel-m269-gki/gki_kernel/dist/boot-img.tar.gz
+          out/msm-kernel-m269-gki/gki_kernel/dist/boot-lz4.img
+        name: Generic Kernel Image 2.0 for Samsung Galaxy A057F (a05s)
+        tag_name: ${{ github.run_id }}
+        body: |
+          ## Samsung Galaxy A057F (a05s)
