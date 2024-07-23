@@ -28,7 +28,7 @@ jobs:
 
     - name: Build Kernel
       run: |
-        bash build_kernel_GKI.sh build/build.sh 2>&1 | tee build_logs.txt
+        bash build_kernel_GKI.sh 2>&1 | tee build_logs.txt
 
     - name: Upload Boot and Kernel
       uses: softprops/action-gh-release@v2
