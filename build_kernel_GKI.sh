@@ -1,6 +1,6 @@
 #!/bin/bash
 
-bash ./clone.sh | exit 0
+echo "Make sure to run clone.sh script first, or else it will fail."
 
 #1. target config
 BUILD_TARGET=a05s_sea_openx
